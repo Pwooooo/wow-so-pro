@@ -64,13 +64,36 @@
         .faq_list__J_vDg { font-size: 14.5px; line-height: 1.75; color: #ccc; margin: 0 0 16px; padding-left: 20px; }
         .faq_list__J_vDg li { margin-bottom: 4px; }
 
-        .faq_inlineCode__BQ6tQ__BQ6tQ { font-family: 'Courier New', Courier, monospace; font-size: .875em; background: hsla(0,0%,100%,.08); padding: 2px 6px; border-radius: 4px; color: #e6e6e6; }
+        .faq_list__J_vDg li { margin-bottom: 4px; }
 
-        .faq_callout__g6DDv { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 8px; margin: 16px 0 20px; font-size: 13.5px; line-height: 1.6; }
-        .faq_calloutIcon__Xw9HM { flex-shrink: 0; display: flex; align-items: center; }
-        .faq_calloutText__wZauY { color: #ddd; }
-        .faq_calloutInfo__GpQ5S { background: rgba(56,139,253,.25); border: 1px solid rgba(56,139,253,.35); }
-        .faq_calloutWarn__XTb5w { background: rgba(227,179,65,.25); border: 1px solid rgba(227,179,65,.35); }
+        .faq_inlineCode__BQ6tQ { font-family: 'Courier New', Courier, monospace; font-size: .875em; background: hsla(0,0%,100%,.08); padding: 2px 6px; border-radius: 4px; color: #e6e6e6; }
+
+        .faq_discordBtn__aBcD {
+            display: inline-flex;
+            align-items: center;
+            padding: 24px 64px;
+            border-radius: 14px;
+            border: 1px solid hsla(0,0%,100%,.15);
+            background: hsla(0,0%,100%,.06);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: #fff;
+            font-family: Unbounded, sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 32px;
+        }
+
+        .faq_discordBtn__aBcD:hover {
+            border-color: hsla(0,0%,100%,.3);
+            background: hsla(0,0%,100%,.1);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,.4);
+        }
 
         .faq_pageNav__MtK4A { display: flex; justify-content: space-between; gap: 16px; max-width: 740px; margin: 48px auto 0; padding-top: 24px; border-top: 1px solid hsla(0,0%,100%,.04); }
         .faq_pageNavBtn__MJE3o { display: flex; flex-direction: column; gap: 4px; background: hsla(0,0%,100%,.12); border: 1px solid hsla(0,0%,100%,.15); border-radius: 8px; padding: 12px 18px; cursor: pointer; transition: background .15s, border-color .15s; text-align: left; max-width: 48%; }
@@ -191,55 +214,9 @@
             <main class="faq_content__hFwbf">
                 <article class="faq_article__M_Ki2">
                     <h1 class="faq_h1__7yXc_">Installation</h1>
-
-                    <h2 class="faq_h2__tYh9h">Disable Real-Time Protection</h2>
-                    <div class="faq_callout__g6DDv faq_calloutWarn__XTb5w">
-                        <span class="faq_calloutIcon__Xw9HM">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                        </span>
-                        <span class="faq_calloutText__wZauY">You must disable your antivirus before downloading. Novelo is a Roblox executor and will be flagged as a false positive.</span>
-                    </div>
-                    <p class="faq_paragraph__sz3kI">Open Windows Security and turn off Real-time protection.</p>
-
-                    <h2 class="faq_h2__tYh9h">Disable Control Flow Guard (CFG)</h2>
-                    <p class="faq_paragraph__sz3kI">Type "exploit protection" in Windows search and open it. Under System settings, find Control flow guard (CFG) and set it to "Off by default".</p>
-
-                    <h2 class="faq_h2__tYh9h">Install Prerequisites</h2>
-                    <p class="faq_paragraph__sz3kI">Make sure you have the following installed before running Novelo:</p>
-                    <ol class="faq_list__J_vDg">
-                        <li>DirectX End-User Runtime from Microsoft.</li>
-                        <li>Visual C++ Redistributable (latest) (x64).</li>
-                        <li>.NET Framework 4.8 or newer.</li>
-                    </ol>
-                    <div class="faq_callout__g6DDv faq_calloutWarn__XTb5w">
-                        <span class="faq_calloutIcon__Xw9HM">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                        </span>
-                        <span class="faq_calloutText__wZauY">Missing these prerequisites can cause crashes, white screens, or Novelo failing to start. Install all of them before proceeding.</span>
-                    </div>
-
-                    <h2 class="faq_h2__tYh9h">Download & Extract</h2>
-                    <p class="faq_paragraph__sz3kI">Use the <code class="faq_inlineCode__BQ6tQ__BQ6tQ">/download</code> command in our Discord server. After downloading, extract the ZIP file using WinRAR. If prompted for a password, enter <code class="faq_inlineCode__BQ6tQ">novelo</code>.</p>
-
-                    <h2 class="faq_h2__tYh9h">Run the User-Interface</h2>
-                    <p class="faq_paragraph__sz3kI">Run <code class="faq_inlineCode__BQ6tQ">Novelo.exe</code> from the extracted folder. If Windows SmartScreen blocks it, click "More info" then "Run anyway".</p>
-
-                    <h2 class="faq_h2__tYh9h">Attaching</h2>
-                    <p class="faq_paragraph__sz3kI">Hit the Attach button on the User-Interface and then there should pop up a CMD and there you put in your credentials that you signed up with.</p>
-                    <div class="faq_callout__g6DDv faq_calloutInfo__GpQ5S">
-                        <span class="faq_calloutIcon__Xw9HM">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-                        </span>
-                        <span class="faq_calloutText__wZauY">Make sure you do NOT use your email as your username when logging in to the injector. Use the username from your Novelo account.</span>
-                    </div>
-
-                    <div class="faq_pageNav__MtK4A">
-                        <div></div>
-                        <div class="faq_pageNavBtn__MJE3o faq_pageNavNext__7NupE">
-                            <span class="faq_pageNavDir__1WcyG">Next</span>
-                            <span class="faq_pageNavLabel__0PH_H">Password/Username invalid</span>
-                        </div>
-                    </div>
+                    <p class="faq_paragraph__sz3kI" style="font-size:18px;color:#fff;margin-top:24px;">Coming Soon</p>
+                    <p class="faq_paragraph__sz3kI" style="margin-top:12px;">Join the Discord for updates</p>
+                    <a href="https://discord.gg/YsAyA3UAVJ" target="_blank" rel="noopener noreferrer" class="faq_discordBtn__aBcD">Discord</a>
                 </article>
             </main>
         </div>
