@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novelo</title>
+    <meta name="description" content="The #1 Roblox script executor. Fast, and stable.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, :after, :before { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #0a0a0a; --text: #fff; --text-dim: #888; --text-muted: #444; --border: #1a1a1a; }
+        html { scroll-behavior: smooth; }
+        body { font-family: Inter, system-ui, sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; -webkit-font-smoothing: antialiased; line-height: 1.6; }
+        a { color: inherit; text-decoration: none; }
+        button { font-family: inherit; cursor: pointer; border: none; outline: none; }
+        img { max-width: 100%; display: block; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 2px; }
+        ::selection { background: hsla(0,0%,100%,.1); color: #fff; }
+
+        .faq_wrap__oJOjR { position: relative; min-height: 100vh; background: #0a0a0a; color: #fff; font-family: Inter, sans-serif; }
+        .faq_waveBg__Rqcub { position: fixed; inset: 0; z-index: 0; pointer-events: none; animation: faq_swirlDrift__1mow2 60s linear infinite; }
+        .faq_waveBg__Rqcub svg { width: 100%; height: 100%; }
+        @keyframes faq_swirlDrift__1mow2 { 0% { transform: translate(0) scale(1.1); } 25% { transform: translate(-25px,15px) scale(1.1); } 50% { transform: translate(10px,-20px) scale(1.1); } 75% { transform: translate(-15px,-10px) scale(1.1); } to { transform: translate(0) scale(1.1); } }
+
+        .faq_topbar__deQ_p { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; gap: 12px; height: 60px; padding: 0 48px; background: hsla(0,0%,4%,.85); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid hsla(0,0%,100%,.04); }
+        .faq_menuBtn__9hE4D { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 4px; }
+        .faq_logoLink___6e5w { display: flex; align-items: center; text-decoration: none; margin-left: -60px; transform: translateY(3px); }
+        .faq_logo__yCZpK { height: 120px; width: auto; }
+        .faq_topbarTitle__OMC6T { font-size: 13px; font-weight: 400; color: #666; padding-left: 16px; border-left: 1px solid hsla(0,0%,100%,.06); }
+        .faq_topbarRight__HyPCT { margin-left: auto; display: flex; align-items: center; gap: 16px; }
+        .faq_searchBtn__ttLRG { display: flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 8px; border: none; background: hsla(0,0%,100%,.06); color: #777; font-size: 13px; font-family: Inter, sans-serif; cursor: pointer; transition: background .15s, color .15s; }
+        .faq_searchBtn__ttLRG:hover { background: hsla(0,0%,100%,.1); color: #aaa; }
+        .faq_searchKbd__vby9b { font-size: 11px; color: #555; padding: 2px 6px; border-radius: 4px; background: hsla(0,0%,100%,.06); }
+        .faq_topbarLink__dRIqE { font-size: 13px; color: #888; text-decoration: none; transition: color .2s; }
+        .faq_topbarLink__dRIqE:hover { color: #fff; }
+
+        .faq_layout__DfXsN { display: flex; padding-top: 60px; min-height: 100vh; position: relative; z-index: 1; }
+        .faq_sidebar__mHChk { position: fixed; top: 60px; left: 0; bottom: 0; width: 260px; overflow-y: auto; padding: 24px 0; background: hsla(0,0%,4%,.55); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-right: 1px solid hsla(0,0%,100%,.04); z-index: 50; }
+        .faq_sidebarNav__HMGHQ { display: flex; flex-direction: column; gap: 8px; }
+        .faq_sidebarGroup__0qtfa { padding: 0 16px; margin-bottom: 8px; }
+        .faq_sidebarGroupLabel__KJGEv { font-family: Unbounded, cursive; font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: #555; padding: 8px 10px 10px; display: flex; align-items: center; gap: 8px; width: 100%; background: none; border: none; cursor: pointer; transition: color .2s; }
+        .faq_sidebarGroupLabel__KJGEv:hover { color: #888; }
+        .faq_sidebarGroupChevron__udwTJ { display: flex; align-items: center; margin-left: auto; transition: transform .25s cubic-bezier(.4,0,.2,1); transform: rotate(90deg); color: #444; }
+        .faq_sidebarGroupChevronCollapsed___xMjW { transform: rotate(0deg); }
+        .faq_sidebarGroupIcon__KDvZi { display: flex; align-items: center; color: #444; }
+        .faq_sidebarItems__FF14r { position: relative; padding-left: 12px; margin-left: 8px; border-left: 1px solid hsla(0,0%,100%,.06); overflow: hidden; }
+        .faq_sidebarItemsCollapsed__lemq0 { max-height: 0; opacity: 0; border-left-color: transparent; }
+        .faq_sidebarItem__iVtkK { display: flex; align-items: center; gap: 9px; width: 100%; text-align: left; background: none; border: none; padding: 8px 12px; border-radius: 6px; font-size: 13.5px; font-weight: 400; color: #888; cursor: pointer; transition: background .2s, color .2s; margin-bottom: 1px; position: relative; word-break: break-word; }
+        .faq_sidebarItem__iVtkK:hover { background: hsla(0,0%,100%,.04); color: #ccc; }
+        .faq_sidebarItemActive__iUE1Z { color: #fff; font-weight: 500; background: none; }
+        .faq_sidebarIndicator__QTRAR { position: absolute; left: -1px; width: 2px; background: #fff; border-radius: 2px; pointer-events: none; top: 8px; height: 34px; }
+
+        .faq_content__hFwbf { flex: 1; margin-left: 260px; overflow-y: auto; overflow-x: hidden; padding: 40px 48px 80px; max-width: 100%; }
+        .faq_article__M_Ki2 { max-width: 740px; margin: 0 auto; }
+
+        .faq_h1__7yXc_ { font-family: Unbounded, cursive; font-size: 32px; font-weight: 700; margin: 0 0 8px; color: #fff; }
+        .faq_h2__tYh9h { font-size: 20px; margin: 40px 0 12px; color: #eee; padding-top: 16px; border-top: 1px solid hsla(0,0%,100%,.04); font-family: Unbounded, cursive; font-weight: 600; }
+        .faq_h3__jKigV { font-family: Unbounded, cursive; font-size: 16px; margin: 28px 0 8px; color: #ddd; font-weight: 600; }
+        .faq_paragraph__sz3kI { font-size: 14.5px; line-height: 1.75; color: #ccc; margin: 0 0 16px; }
+        .faq_list__J_vDg { font-size: 14.5px; line-height: 1.75; color: #ccc; margin: 0 0 16px; padding-left: 20px; }
+        .faq_list__J_vDg li { margin-bottom: 4px; }
+
+        .faq_inlineCode__BQ6tQ__BQ6tQ { font-family: 'Courier New', Courier, monospace; font-size: .875em; background: hsla(0,0%,100%,.08); padding: 2px 6px; border-radius: 4px; color: #e6e6e6; }
+
+        .faq_callout__g6DDv { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 8px; margin: 16px 0 20px; font-size: 13.5px; line-height: 1.6; }
+        .faq_calloutIcon__Xw9HM { flex-shrink: 0; display: flex; align-items: center; }
+        .faq_calloutText__wZauY { color: #ddd; }
+        .faq_calloutInfo__GpQ5S { background: rgba(56,139,253,.25); border: 1px solid rgba(56,139,253,.35); }
+        .faq_calloutWarn__XTb5w { background: rgba(227,179,65,.25); border: 1px solid rgba(227,179,65,.35); }
+
+        .faq_pageNav__MtK4A { display: flex; justify-content: space-between; gap: 16px; max-width: 740px; margin: 48px auto 0; padding-top: 24px; border-top: 1px solid hsla(0,0%,100%,.04); }
+        .faq_pageNavBtn__MJE3o { display: flex; flex-direction: column; gap: 4px; background: hsla(0,0%,100%,.12); border: 1px solid hsla(0,0%,100%,.15); border-radius: 8px; padding: 12px 18px; cursor: pointer; transition: background .15s, border-color .15s; text-align: left; max-width: 48%; }
+        .faq_pageNavBtn__MJE3o:hover { background: hsla(0,0%,100%,.18); border-color: hsla(0,0%,100%,.25); }
+        .faq_pageNavNext__7NupE { text-align: right; margin-left: auto; }
+        .faq_pageNavDir__1WcyG { font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: #555; }
+        .faq_pageNavLabel__0PH_H { font-size: 14px; font-weight: 500; color: #ccc; }
+
+        @media (max-width: 768px) {
+            .faq_menuBtn__9hE4D { display: flex; }
+            .faq_sidebar__mHChk { top: 60px; transform: translateX(-100%); transition: transform .25s ease; width: 280px; background: hsla(0,0%,4%,.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+            .faq_sidebarOpen__N1bdC { transform: translateX(0); }
+            .faq_content__hFwbf { margin-left: 0; padding: 28px 20px 60px; }
+            .faq_h1__7yXc_ { font-size: 24px; }
+            .faq_h2__tYh9h { font-size: 17px; }
+            .faq_pageNav__MtK4A { flex-direction: column; }
+            .faq_pageNavBtn__MJE3o { max-width: 100%; }
+            .faq_pageNavNext__7NupE { text-align: left; margin-left: 0; }
+            .faq_topbarRight__HyPCT { gap: 10px; }
+            .faq_searchKbd__vby9b { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="faq_wrap__oJOjR">
+        <div class="faq_waveBg__Rqcub" aria-hidden="true">
+            <svg viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                <path d="M0 400 Q 180 350, 360 400 T 720 400 T 1080 400 T 1440 400" stroke="rgba(255,255,255,0.05)" stroke-width="1" fill="none"/>
+                <path d="M0 450 Q 180 390, 360 450 T 720 450 T 1080 450 T 1440 450" stroke="rgba(255,255,255,0.04)" stroke-width="0.8" fill="none"/>
+                <path d="M0 500 Q 180 440, 360 500 T 720 500 T 1080 500 T 1440 500" stroke="rgba(255,255,255,0.05)" stroke-width="1" fill="none"/>
+                <path d="M0 550 Q 180 490, 360 550 T 720 550 T 1080 550 T 1440 550" stroke="rgba(255,255,255,0.04)" stroke-width="0.8" fill="none"/>
+                <path d="M0 600 Q 180 540, 360 600 T 720 600 T 1080 600 T 1440 600" stroke="rgba(255,255,255,0.05)" stroke-width="1" fill="none"/>
+                <path d="M0 650 Q 180 590, 360 650 T 720 650 T 1080 650 T 1440 650" stroke="rgba(255,255,255,0.03)" stroke-width="0.8" fill="none"/>
+            </svg>
+        </div>
+
+        <header class="faq_topbar__deQ_p">
+            <button class="faq_menuBtn__9hE4D" onclick="document.querySelector('.faq_sidebar__mHChk').classList.toggle('faq_sidebarOpen__N1bdC')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+            <a href="index.html" class="faq_logoLink___6e5w">
+                <img class="faq_logo__yCZpK" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 80'%3E%3Ctext x='0' y='50' font-family='Unbounded, sans-serif' font-size='36' font-weight='800' fill='white'%3ENovelo%3C/text%3E%3C/svg%3E" alt="Novelo">
+            </a>
+            <span class="faq_topbarTitle__OMC6T">Documentation</span>
+            <div class="faq_topbarRight__HyPCT">
+                <button class="faq_searchBtn__ttLRG">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    Search
+                    <span class="faq_searchKbd__vby9b">Ctrl K</span>
+                </button>
+                <a href="index.html" class="faq_topbarLink__dRIqE">Home</a>
+                <a href="https://discord.gg/YsAyA3UAVJ" target="_blank" rel="noopener noreferrer" class="faq_topbarLink__dRIqE">Discord</a>
+            </div>
+        </header>
+
+        <div class="faq_layout__DfXsN">
+            <aside class="faq_sidebar__mHChk">
+                <nav class="faq_sidebarNav__HMGHQ">
+                    <div class="faq_sidebarGroup__0qtfa">
+                        <button class="faq_sidebarGroupLabel__KJGEv" onclick="toggleGroup(this)">
+                            <span class="faq_sidebarGroupIcon__KDvZi">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                            </span>
+                            Getting Started
+                            <span class="faq_sidebarGroupChevron__udwTJ">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                            </span>
+                        </button>
+                        <div class="faq_sidebarItems__FF14r">
+                            <button class="faq_sidebarItem__iVtkK faq_sidebarItemActive__iUE1Z">
+                                <span class="faq_sidebarIndicator__QTRAR"></span>
+                                Installation
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="faq_sidebarGroup__0qtfa">
+                        <button class="faq_sidebarGroupLabel__KJGEv" onclick="toggleGroup(this)">
+                            <span class="faq_sidebarGroupIcon__KDvZi">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            </span>
+                            Common Issues
+                            <span class="faq_sidebarGroupChevron__udwTJ faq_sidebarGroupChevronCollapsed___xMjW">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                            </span>
+                        </button>
+                        <div class="faq_sidebarItems__FF14r faq_sidebarItemsCollapsed__lemq0">
+                            <button class="faq_sidebarItem__iVtkK">Password/Username invalid</button>
+                            <button class="faq_sidebarItem__iVtkK">Error code: 0x1</button>
+                            <button class="faq_sidebarItem__iVtkK">Error code: 0x2</button>
+                            <button class="faq_sidebarItem__iVtkK">Error code: 0x3</button>
+                            <button class="faq_sidebarItem__iVtkK">Error code: 0x5</button>
+                            <button class="faq_sidebarItem__iVtkK">Error code: 0x6</button>
+                        </div>
+                    </div>
+
+                    <div class="faq_sidebarGroup__0qtfa">
+                        <button class="faq_sidebarGroupLabel__KJGEv" onclick="toggleGroup(this)">
+                            <span class="faq_sidebarGroupIcon__KDvZi">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            </span>
+                            FAQ
+                            <span class="faq_sidebarGroupChevron__udwTJ faq_sidebarGroupChevronCollapsed___xMjW">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                            </span>
+                        </button>
+                        <div class="faq_sidebarItems__FF14r faq_sidebarItemsCollapsed__lemq0">
+                            <button class="faq_sidebarItem__iVtkK">How to purchase</button>
+                            <button class="faq_sidebarItem__iVtkK">How to create a Novelo account</button>
+                            <button class="faq_sidebarItem__iVtkK">How to view the Novelo changelogs</button>
+                            <button class="faq_sidebarItem__iVtkK">How to download Novelo</button>
+                            <button class="faq_sidebarItem__iVtkK">How good is Novelo</button>
+                        </div>
+                    </div>
+                </nav>
+            </aside>
+
+            <main class="faq_content__hFwbf">
+                <article class="faq_article__M_Ki2">
+                    <h1 class="faq_h1__7yXc_">Installation</h1>
+
+                    <h2 class="faq_h2__tYh9h">Disable Real-Time Protection</h2>
+                    <div class="faq_callout__g6DDv faq_calloutWarn__XTb5w">
+                        <span class="faq_calloutIcon__Xw9HM">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        </span>
+                        <span class="faq_calloutText__wZauY">You must disable your antivirus before downloading. Novelo is a Roblox executor and will be flagged as a false positive.</span>
+                    </div>
+                    <p class="faq_paragraph__sz3kI">Open Windows Security and turn off Real-time protection.</p>
+
+                    <h2 class="faq_h2__tYh9h">Disable Control Flow Guard (CFG)</h2>
+                    <p class="faq_paragraph__sz3kI">Type "exploit protection" in Windows search and open it. Under System settings, find Control flow guard (CFG) and set it to "Off by default".</p>
+
+                    <h2 class="faq_h2__tYh9h">Install Prerequisites</h2>
+                    <p class="faq_paragraph__sz3kI">Make sure you have the following installed before running Novelo:</p>
+                    <ol class="faq_list__J_vDg">
+                        <li>DirectX End-User Runtime from Microsoft.</li>
+                        <li>Visual C++ Redistributable (latest) (x64).</li>
+                        <li>.NET Framework 4.8 or newer.</li>
+                    </ol>
+                    <div class="faq_callout__g6DDv faq_calloutWarn__XTb5w">
+                        <span class="faq_calloutIcon__Xw9HM">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        </span>
+                        <span class="faq_calloutText__wZauY">Missing these prerequisites can cause crashes, white screens, or Novelo failing to start. Install all of them before proceeding.</span>
+                    </div>
+
+                    <h2 class="faq_h2__tYh9h">Download & Extract</h2>
+                    <p class="faq_paragraph__sz3kI">Use the <code class="faq_inlineCode__BQ6tQ__BQ6tQ">/download</code> command in our Discord server. After downloading, extract the ZIP file using WinRAR. If prompted for a password, enter <code class="faq_inlineCode__BQ6tQ">novelo</code>.</p>
+
+                    <h2 class="faq_h2__tYh9h">Run the User-Interface</h2>
+                    <p class="faq_paragraph__sz3kI">Run <code class="faq_inlineCode__BQ6tQ">Novelo.exe</code> from the extracted folder. If Windows SmartScreen blocks it, click "More info" then "Run anyway".</p>
+
+                    <h2 class="faq_h2__tYh9h">Attaching</h2>
+                    <p class="faq_paragraph__sz3kI">Hit the Attach button on the User-Interface and then there should pop up a CMD and there you put in your credentials that you signed up with.</p>
+                    <div class="faq_callout__g6DDv faq_calloutInfo__GpQ5S">
+                        <span class="faq_calloutIcon__Xw9HM">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                        </span>
+                        <span class="faq_calloutText__wZauY">Make sure you do NOT use your email as your username when logging in to the injector. Use the username from your Novelo account.</span>
+                    </div>
+
+                    <div class="faq_pageNav__MtK4A">
+                        <div></div>
+                        <div class="faq_pageNavBtn__MJE3o faq_pageNavNext__7NupE">
+                            <span class="faq_pageNavDir__1WcyG">Next</span>
+                            <span class="faq_pageNavLabel__0PH_H">Password/Username invalid</span>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        function toggleGroup(btn) {
+            var items = btn.nextElementSibling;
+            var chevron = btn.querySelector('.faq_sidebarGroupChevron__udwTJ');
+            items.classList.toggle('faq_sidebarItemsCollapsed__lemq0');
+            chevron.classList.toggle('faq_sidebarGroupChevronCollapsed___xMjW');
+        }
+    </script>
+</body>
+</html>
