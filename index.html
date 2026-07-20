@@ -36,10 +36,12 @@
         .page_chooserMain__aj8WG { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 140px 24px 100px; gap: 64px; }
         .page_chooserHeader__4F3D4 { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px; }
         .page_chooserTitle__EbMMG { font-family: Unbounded, sans-serif; font-size: clamp(56px, 8vw, 96px); font-weight: 800; letter-spacing: -2.5px; line-height: 1; display: flex; filter: drop-shadow(0 0 30px rgba(255,255,255,.15)); }
-        .page_letterWave__jXaor { display: inline-block; background: linear-gradient(90deg, #555, #999, #fff, #999, #555); background-size: 600% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; will-change: background-position; animation: page_shimmer__G1aXL 4s ease-in-out infinite; animation-delay: calc(var(--i) * -.4s); }
+        .page_letterWave__jXaor { display: inline-block; opacity: 0; transform: translateY(40px); background: linear-gradient(90deg, #555, #999, #fff, #999, #555); background-size: 600% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; will-change: background-position, opacity, transform; animation: page_letterEntrance 0.6s ease forwards, page_shimmer__G1aXL 4s ease-in-out infinite; animation-delay: calc(var(--i) * 0.04s), calc(var(--i) * -0.4s); }
+        @keyframes page_letterEntrance { 0% { opacity: 0; transform: translateY(40px); } 100% { opacity: 1; transform: translateY(0); } }
         @keyframes page_shimmer__G1aXL { 0%, to { background-position: 100% 50%; } 50% { background-position: 0 50%; } }
         .page_chooserSubtitle__PbXhY { font-size: 15px; color: var(--text-dim); letter-spacing: .4px; display: flex; flex-wrap: wrap; justify-content: center; max-width: 500px; line-height: 1.6; }
-        .page_subLetter__iD4OT { display: inline-block; white-space: pre; }
+        .page_subLetter__iD4OT { display: inline-block; white-space: pre; opacity: 0; transform: translateY(14px); animation: page_subLetterEntrance 0.4s ease forwards; animation-delay: calc(var(--i) * 0.04s); }
+        @keyframes page_subLetterEntrance { 0% { opacity: 0; transform: translateY(14px); } 100% { opacity: 1; transform: translateY(0); } }
 
         .page_chooserGrid__r8TXD { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; max-width: 820px; }
         .page_chooserCard__Qvehi { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 36px 32px; border-radius: 16px; border: 1px solid hsla(0,0%,100%,.15); background: hsla(0,0%,100%,.06); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); text-decoration: none; transition: border-color .3s, background .3s, transform .3s, box-shadow .3s; position: relative; overflow: hidden; cursor: pointer; }
@@ -146,7 +148,6 @@
                 const span = document.createElement('span');
                 span.textContent = text[i] === ' ' ? '\u00A0' : text[i];
                 span.style.setProperty('--i', i);
-                span.style.animationDelay = `${delay + i * 0.04}s`;
                 if (className) span.className = className;
                 element.appendChild(span);
             }
